@@ -1,6 +1,6 @@
 {
   "name": "ibodev-ip",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "license": "MIT",
   "type": "module",
@@ -13,7 +13,8 @@
     "request-ip": "^3.3.0"
   },
   "scripts": {
-    "server:dev": "nodemon ./devServer.js"
+    "server:dev": "nodemon ./devServer.js",
+    "postversion": "git push -u origin main --tags"
   },
   "devDependencies": {
     "@vercel/node": "^2.9.3"
