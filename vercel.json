@@ -1,5 +1,6 @@
 {
   "public": false,
+  "outputDirectory": "dist",
   "headers": [
     {
       "source": "/api/(.*)",
@@ -17,5 +18,5 @@
       ]
     }
   ],
-  "rewrites": [{ "source": "/api/(.*)", "destination": "/api/404.js" }]
+  "rewrites": [{ "source": "/api/(.*)", "destination": "/api/404.ts" }]
 }

@@ -1,9 +1,9 @@
 {
   "name": "ibodev-ip",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "dist/app.js",
   "license": "MIT",
-  "type": "module",
+  "type": "commonjs",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2",
@@ -13,10 +13,25 @@
     "request-ip": "^3.3.0"
   },
   "scripts": {
-    "server:dev": "nodemon ./devServer.js",
+    "vercel:start": "vercel dev",
+    "vercel:build": "vercel build",
+    "vercel:deploy": "vercel deploy",
+    "vercel:deploy:prod": "vercel deploy --prod",
+    "build": "yarn clean && npx tsc --outDir dist",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/devServer.js\"",
+    "clean": "npx rimraf dist",
     "postversion": "git push -u origin main --tags"
   },
   "devDependencies": {
-    "@vercel/node": "^2.9.3"
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/express-useragent": "^1.0.2",
+    "@types/morgan": "^1.9.4",
+    "@types/node": "^18.13.0",
+    "@types/request-ip": "^0.0.37",
+    "@vercel/node": "^2.9.3",
+    "concurrently": "^7.6.0",
+    "nodemon": "^2.0.20",
+    "typescript": "^4.9.5"
   }
 }

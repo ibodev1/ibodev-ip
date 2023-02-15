@@ -1,5 +1,5 @@
-import app from "./app.js";
-import routes from "./routes/router.js";
+import app from "./app";
+import routes from "./routes/router";
 
 app.use("/", routes);
 
