@@ -1,33 +1,28 @@
 import express, { Request, Response, NextFunction } from "express";
+import { Details } from "express-useragent";
+import { UserAgentResponse } from "../types/useragent";
 const userAgentRouter = express.Router();
 
 userAgentRouter.get(
   "/useragent",
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      let userAgentIs = (useragent: any) => {
+      let userAgentIs = (useragent: Details | undefined | any): string[] => {
         let r = [];
         for (let i in useragent) if (useragent[i] === true) r.push(i);
         return r;
       };
 
-      const data = {
-        //@ts-ignore
-        browser: req.useragent.browser,
-        //@ts-ignore
-        version: req.useragent.version,
-        //@ts-ignore
-        os: req.useragent.os,
-        //@ts-ignore
-        platform: req.useragent.platform,
-        //@ts-ignore
-        geoIp: req.useragent.geoIp,
-        //@ts-ignore
-        source: req.useragent.source,
-        //@ts-ignore
-        is: userAgentIs(req.useragent)
+      const responseData: UserAgentResponse = {
+        browser: req.useragent?.browser,
+        version: req.useragent?.version,
+        os: req.useragent?.os,
+        platform: req.useragent?.platform,
+        geoIp: req.useragent?.geoIp,
+        source: req.useragent?.source,
+        is: userAgentIs(req.useragent || undefined)
       };
-      res.status(200).json(data);
+      res.status(200).json(responseData);
     } catch (error: any) {
       res.status(400).end(error.toString());
     }
