@@ -15,13 +15,13 @@ export interface Location {
   longitude: string[] | string | undefined | null;
 }
 
-declare const COUNTRY = "x-vercel-ip-country";
-declare const FORWARDED = "x-vercel-forwarded-for";
-declare const TIMEZONE = "x-vercel-ip-timezone";
-declare const LATITUDE = "x-vercel-ip-latitude";
-declare const LONGITUDE = "x-vercel-ip-longitude";
-declare const COUNTRY_REGION = "x-vercel-ip-country-region";
-declare const CITY = "x-vercel-ip-city";
+const COUNTRY: string = "x-vercel-ip-country";
+const FORWARDED: string = "x-vercel-forwarded-for";
+const TIMEZONE: string = "x-vercel-ip-timezone";
+const LATITUDE: string = "x-vercel-ip-latitude";
+const LONGITUDE: string = "x-vercel-ip-longitude";
+const COUNTRY_REGION: string = "x-vercel-ip-country-region";
+const CITY: string = "x-vercel-ip-city";
 
 export {
   COUNTRY,
