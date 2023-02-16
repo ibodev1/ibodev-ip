@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { parse } from "accept-language-parser";
+import { parse, Language } from "accept-language-parser";
 import {
   IpResponse,
   COUNTRY,
@@ -18,13 +18,12 @@ ipRouter.get("/ip", async (req: Request, res: Response) => {
     const country: Country | undefined = await getCountry(
       req.headers[COUNTRY] || undefined
     );
-    const languageCode: string | undefined = parse(
-      req.headers["accept-language"] || undefined
-    )[0].code;
+    const language: Language | undefined =
+      parse(req.headers["accept-language"])[0] || undefined;
     const responseData: IpResponse = {
       query: req.clientIp || req.headers[FORWARDED],
       timezone: req.headers[TIMEZONE] || undefined,
-      lang: languageCode,
+      lang: language !== undefined ? language.code : undefined,
       location: {
         latitude: req.headers[LATITUDE] || undefined,
         longitude: req.headers[LONGITUDE] || undefined
