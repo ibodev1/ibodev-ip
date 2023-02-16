@@ -12,6 +12,22 @@ app.use(logger("dev"));
 app.set("port", PORT);
 app.use(helmet());
 app.use(cors());
+app.use((req: Request, res: Response, next: NextFunction) => {
+  const isHTTPS =
+    req.headers["x-forwarded-proto"] &&
+    req.headers["x-forwarded-proto"] === "https";
+  if (isHTTPS) {
+    next();
+  } else {
+    if (req.method === "GET") {
+      res.redirect(301, "https://" + req.headers.host + req.originalUrl);
+    } else {
+      res
+        .status(403)
+        .send("Please use HTTPS when submitting data to this server.");
+    }
+  }
+});
 app.use(express.json());
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.removeHeader("X-Powered-By");
