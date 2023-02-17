@@ -35,5 +35,19 @@
     "concurrently": "^7.6.0",
     "nodemon": "^2.0.20",
     "typescript": "^4.9.5"
+  },
+  "response": {
+    "author": {
+      "github": "https://github.com/ibodev1",
+      "mail": "ibrahimodev42@gmail.com",
+      "personal": "https://ibodev1.github.io/"
+    },
+    "git": "git@github.com:ibodev1/ibodev-ip.git",
+    "repo": "https://github.com/ibodev1/ibodev-ip",
+    "readme": "https://github.com/ibodev1/ibodev-ip#readme",
+    "routes": {
+      "ip": "/api/ip",
+      "useragent": "/api/useragent"
+    }
   }
 }
