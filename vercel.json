@@ -18,5 +18,22 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/api",
+      "permanent": true
+    },
+    {
+      "source": "/ip",
+      "destination": "/api/ip",
+      "permanent": true
+    },
+    {
+      "source": "/useragent",
+      "destination": "/api/useragent",
+      "permanent": true
+    }
+  ],
   "rewrites": [{ "source": "/api/(.*)", "destination": "/api/404.ts" }]
 }
