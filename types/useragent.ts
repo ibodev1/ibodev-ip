@@ -1,9 +1,9 @@
-export interface UserAgentResponse {
-  browser: string | undefined | null;
-  version: string | undefined | null;
-  os: string | undefined | null;
-  platform: string | undefined | null;
-  geoIp: { [key: string]: string | undefined | null } | undefined;
-  source: string | undefined | null;
-  is: [string] | string[];
-}
+export type UserAgentResponse = {
+	browser: string | undefined | undefined;
+	version: string | undefined | undefined;
+	os: string | undefined | undefined;
+	platform: string | undefined | undefined;
+	geoIp: Record<string, string | undefined | undefined> | undefined;
+	source: string | undefined | undefined;
+	is: [string] | string[];
+};

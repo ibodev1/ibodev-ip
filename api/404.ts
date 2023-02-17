@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
+import {type Request, type Response} from 'express';
 
-export default (req: Request, res: Response) => {
-  res.status(404).json({ message: "Not Found!" });
+export default (request: Request, response: Response) => {
+	response.status(404).json({message: 'Not Found!'});
 };

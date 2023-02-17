@@ -1,6 +1,6 @@
-import app from "../app";
-import ipRouter from "../routes/ip";
+import app from '../app';
+import ipRouter from '../routes/ip';
 
-app.use("/api/", ipRouter);
+app.use('/api/', ipRouter);
 
-export default app;
+export {default} from '../app';

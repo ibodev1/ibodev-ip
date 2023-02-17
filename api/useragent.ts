@@ -1,6 +1,6 @@
-import app from "../app";
-import userAgentRouter from "../routes/useragent";
+import app from '../app';
+import userAgentRouter from '../routes/useragent';
 
-app.use("/api/", userAgentRouter);
+app.use('/api/', userAgentRouter);
 
-export default app;
+export {default} from '../app';

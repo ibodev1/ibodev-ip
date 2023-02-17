@@ -1,32 +1,42 @@
-import express, { Request, Response, NextFunction } from "express";
-import { Details } from "express-useragent";
-import { UserAgentResponse } from "../types/useragent";
+import express, {
+	type Request,
+	type Response,
+	type NextFunction,
+} from 'express';
+import {type Details} from 'express-useragent';
+import {type UserAgentResponse} from '../types/useragent';
+
 const userAgentRouter = express.Router();
 
 userAgentRouter.get(
-  "/useragent",
-  async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      let userAgentIs = (useragent: Details | undefined | any): string[] => {
-        let r = [];
-        for (let i in useragent) if (useragent[i] === true) r.push(i);
-        return r;
-      };
+	'/useragent',
+	async (request: Request, response: Response, next: NextFunction) => {
+		try {
+			const userAgentIs = (useragent: Details | undefined | any): string[] => {
+				const r = [];
+				for (const i in useragent) {
+					if (useragent[i] === true) {
+						r.push(i);
+					}
+				}
 
-      const responseData: UserAgentResponse = {
-        browser: req.useragent?.browser,
-        version: req.useragent?.version,
-        os: req.useragent?.os,
-        platform: req.useragent?.platform,
-        geoIp: req.useragent?.geoIp,
-        source: req.useragent?.source,
-        is: userAgentIs(req.useragent || undefined)
-      };
-      res.status(200).json(responseData);
-    } catch (error: any) {
-      res.status(400).end(error.toString());
-    }
-  }
+				return r;
+			};
+
+			const responseData: UserAgentResponse = {
+				browser: request.useragent?.browser,
+				version: request.useragent?.version,
+				os: request.useragent?.os,
+				platform: request.useragent?.platform,
+				geoIp: request.useragent?.geoIp,
+				source: request.useragent?.source,
+				is: userAgentIs(request.useragent ?? undefined),
+			};
+			response.status(200).json(responseData);
+		} catch (error: any) {
+			response.status(400).end(error.toString());
+		}
+	},
 );
 
 export default userAgentRouter;

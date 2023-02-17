@@ -11,7 +11,8 @@
     "express-useragent": "^1.0.15",
     "helmet": "^6.0.1",
     "morgan": "^1.10.0",
-    "request-ip": "^3.3.0"
+    "request-ip": "^3.3.0",
+    "vercel": "^28.16.2"
   },
   "scripts": {
     "vercel:start": "vercel dev",
@@ -19,8 +20,10 @@
     "vercel:deploy": "vercel deploy",
     "vercel:deploy:prod": "vercel deploy --prod",
     "build": "yarn clean && npx tsc --outDir dist",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/devServer.js\"",
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/dev-server.js\"",
     "clean": "npx rimraf dist",
+    "test": "xo",
+    "test:fix": "xo --fix",
     "postversion": "git push -u origin main --tags"
   },
   "devDependencies": {
@@ -34,7 +37,24 @@
     "@vercel/node": "^2.9.3",
     "concurrently": "^7.6.0",
     "nodemon": "^2.0.20",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "xo": "^0.53.1"
+  },
+  "xo": {
+    "rules": {
+      "import/extensions": "off",
+      "@typescript-eslint/naming-convention": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-return": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-implicit-any-catch": "off",
+      "@typescript-eslint/restrict-plus-operands": "off",
+      "@typescript-eslint/no-redundant-type-constituents": "off",
+      "import/no-anonymous-default-export": "off",
+      "no-mixed-spaces-and-tabs": "off",
+      "no-negated-condition": "off",
+      "new-cap": "off"
+    }
   },
   "response": {
     "author": {
